@@ -1,14 +1,17 @@
-import { frappeGet } from './client';
+import { apiClient, API_ENDPOINTS } from './client';
 import type { Banner, Category } from '../types';
 
 export async function getPortalBanners(): Promise<Banner[]> {
-    return frappeGet<Banner[]>('get_portal_banners');
+    const response = await apiClient.get<Banner[]>(API_ENDPOINTS.PORTAL.GET_BANNERS);
+    return response.data || [];
 }
 
 export async function getPortalCategories(): Promise<Category[]> {
-    return frappeGet<Category[]>('get_portal_categories');
+    const response = await apiClient.get<Category[]>(API_ENDPOINTS.PORTAL.GET_CATEGORIES);
+    return response.data || [];
 }
 
 export async function getRentalCategories(): Promise<Category[]> {
-    return frappeGet<Category[]>('get_rental_categories');
+    const response = await apiClient.get<Category[]>(API_ENDPOINTS.PORTAL.GET_RENTAL_CATEGORIES);
+    return response.data || [];
 }

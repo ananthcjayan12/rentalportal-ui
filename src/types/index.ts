@@ -73,10 +73,10 @@ export interface Customer {
 // Booking Types
 export interface Booking {
     name: string;
-    posting_date: string;
-    total: number;
+    posting_date?: string;
+    total?: number;
     booking_status?: string;
-    customer_name: string;
+    customer_name?: string;
     customer?: string;
     advance_amount?: number;
     balance_amount_collected?: number;
@@ -85,6 +85,8 @@ export interface Booking {
     function_date?: string;
     rental_start_date?: string;
     rental_end_date?: string;
+    earliest_rental_date?: string;
+    latest_rental_date?: string;
     item_count?: number;
 }
 

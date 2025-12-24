@@ -1,3 +1,11 @@
 export { HomePage } from './HomePage';
 export { CategoryPage } from './CategoryPage';
 export { ItemDetailPage } from './ItemDetailPage';
+export { CartPage } from './CartPage';
+export { ProfilePage } from './ProfilePage';
+export { BookingsPage } from './BookingsPage';
+export { BookingDetailsPage } from './BookingDetailsPage';
+export { LoginPage } from './LoginPage';
+export { StaffDashboardPage } from './StaffDashboardPage';
+export { OwnerDashboardPage } from './OwnerDashboardPage';
+export { OwnerAddItemPage } from './OwnerAddItemPage';

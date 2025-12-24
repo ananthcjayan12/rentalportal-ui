@@ -1,8 +1,12 @@
-import { frappeCall } from './client';
+import { apiClient, API_ENDPOINTS } from './client';
 import type { CartData } from '../types';
 
 export async function getCustomerCartItems(customer_id: string): Promise<CartData> {
-    return frappeCall<CartData>('get_customer_cart_items', { customer_id });
+    const response = await apiClient.post<CartData>(
+        API_ENDPOINTS.CART.GET_ITEMS,
+        { customer_id }
+    );
+    return response.data || { items: [], total: 0, item_count: 0 };
 }
 
 export async function addToCustomerCart(
@@ -13,25 +17,37 @@ export async function addToCustomerCart(
     function_date?: string,
     quantity: number = 1
 ): Promise<{ success: boolean; message?: string }> {
-    return frappeCall('add_to_customer_cart', {
-        item_code,
-        customer_id,
-        rental_start_date,
-        rental_end_date,
-        function_date,
-        quantity,
-    });
+    const response = await apiClient.post<{ success: boolean; message?: string }>(
+        API_ENDPOINTS.CART.ADD_ITEM,
+        {
+            item_code,
+            customer_id,
+            rental_start_date,
+            rental_end_date,
+            function_date,
+            quantity,
+        }
+    );
+    return response.data || { success: false, message: 'Failed to add item' };
 }
 
 export async function removeFromCustomerCart(
     cart_item_id: string,
     customer_id: string
 ): Promise<{ success: boolean; message?: string }> {
-    return frappeCall('remove_from_customer_cart', { cart_item_id, customer_id });
+    const response = await apiClient.post<{ success: boolean; message?: string }>(
+        API_ENDPOINTS.CART.REMOVE_ITEM,
+        { cart_item_id, customer_id }
+    );
+    return response.data || { success: false };
 }
 
 export async function clearCustomerCart(
     customer_id: string
 ): Promise<{ success: boolean; message?: string }> {
-    return frappeCall('clear_customer_cart', { customer_id });
+    const response = await apiClient.post<{ success: boolean; message?: string }>(
+        API_ENDPOINTS.CART.CLEAR,
+        { customer_id }
+    );
+    return response.data || { success: false };
 }

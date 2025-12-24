@@ -1,6 +1,7 @@
 // Format currency in Indian Rupees
-export function formatCurrency(amount: number): string {
-    return `₹${amount.toLocaleString('en-IN')}`;
+export function formatCurrency(amount: number | null | undefined): string {
+    const val = amount || 0;
+    return `₹${val.toLocaleString('en-IN')}`;
 }
 
 // Format date to display format

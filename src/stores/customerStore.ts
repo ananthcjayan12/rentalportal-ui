@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import type { Customer } from '../types';
 
 interface CustomerState {
@@ -17,6 +17,14 @@ export const useCustomerStore = create<CustomerState>()(
         }),
         {
             name: 'customer-store',
+            storage: createJSONStorage(() => localStorage),
+            // Ensure the store is hydrated immediately on page load
+            skipHydration: false,
         }
     )
 );
+
+// Hydrate the store immediately on module load
+if (typeof window !== 'undefined') {
+    useCustomerStore.persist.rehydrate();
+}
