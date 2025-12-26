@@ -1,5 +1,5 @@
 // Cloudflare Pages Function to proxy API requests to Frappe backend
-const BACKEND_URL = 'http://72.61.174.204:8301';
+const BACKEND_URL = 'http://rentalgenie.srshti.co.in:8301';
 
 export async function onRequest(context) {
     const { request } = context;
@@ -34,9 +34,9 @@ export async function onRequest(context) {
     }
 
     // Set the correct host for the backend
-    headers.set('Host', '72.61.174.204:8301');
-    headers.set('Origin', 'http://72.61.174.204:8301');
-    headers.set('Referer', 'http://72.61.174.204:8301/');
+    headers.set('Host', 'rentalgenie.srshti.co.in:8301');
+    headers.set('Origin', 'http://rentalgenie.srshti.co.in:8301');
+    headers.set('Referer', 'http://rentalgenie.srshti.co.in:8301/');
 
     // Forward request to backend
     const backendRequest = new Request(backendUrl, {
