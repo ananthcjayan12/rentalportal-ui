@@ -19,6 +19,7 @@ Modern React application for the Rental Management Portal, built with Vite, Type
 ### Prerequisites
 - Node.js 18+
 - npm or pnpm
+- dsds
 
 ### Installation
 
