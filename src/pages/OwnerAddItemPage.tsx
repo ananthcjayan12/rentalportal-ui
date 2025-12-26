@@ -1,14 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-    Package, ArrowLeft, Upload, X, Trash2, Plus, AlertCircle, Save
+    Package, ArrowLeft, Upload, X, Plus, AlertCircle, Save
 } from 'lucide-react';
 import {
     createRentalItem, getItemCreationContext,
     type CreateItemData, type NewSupplierData, type UploadedImage,
     type ItemGroup, type Supplier
 } from '../api/owner';
-import { formatCurrency } from '../utils/formatters';
 
 export function OwnerAddItemPage() {
     const navigate = useNavigate();
